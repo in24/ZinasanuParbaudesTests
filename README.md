@@ -1,0 +1,2 @@
+# zinasanuParbaudesTests
+Programmēšanas skolotāju mācības
