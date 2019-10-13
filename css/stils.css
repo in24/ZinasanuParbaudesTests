@@ -1,0 +1,40 @@
+body {
+  background-color: #a15721;
+  color: #decdbf;
+}
+#kaajene {
+  text-align: center;
+}
+#galva {
+  text-align: center;
+}
+p {
+  font-size: larger;
+}
+.jautajums {
+  display: flex;
+  background-color: #decdbf;
+  justify-content: center;
+}
+.atbildes {
+  display: flex;
+  flex-flow: row wrap;
+  background-color: #decdbf;
+  justify-content: center;
+}
+.jautajums > div {
+  background-color: #a15721;
+  width: 97%;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+.atbildes > div {
+  background-color: #a15721;
+  width: 48%;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
