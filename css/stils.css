@@ -2,30 +2,26 @@ body {
   background-color: #a15721;
   color: #decdbf;
 }
-#kaajene {
-  text-align: center;
-}
-#galva {
-  text-align: center;
-}
+#kaajene,
+#galva,
 #sakums {
   text-align: center;
 }
 p {
   font-size: larger;
 }
-.jautajums {
+.jautajums,
+.rezultats {
   display: flex;
-  background-color: #decdbf;
   justify-content: center;
 }
 .atbildes {
   display: flex;
   flex-flow: row wrap;
-  background-color: #decdbf;
   justify-content: center;
 }
-.jautajums > div {
+.jautajums > div,
+.rezultats > div {
   background-color: #a15721;
   width: 97%;
   margin: 10px;
@@ -50,8 +46,9 @@ p {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  margin: 4px 2px;
+  margin: 4px 4px;
   cursor: pointer;
+  width: 97%;
 }
 .poga:hover {
   background-color: #a15721;
