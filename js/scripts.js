@@ -4,7 +4,7 @@ function atteloHTML() {
    * un ieliek to HTML īstajās vietās,
    * izmantojot flexbox */
   // Pagaidu variants: vienkārši piešķīru vērtības
-  let jautajums = "Kāda uzdevuma veikšanai paredzēta HTML valoda?";
+  let jautaajums = "Mans jautājums";
   let pareiza = "Tīmekļa lapas satura un struktūras aprakstam";
   let atbildes = [
     "Tīmekļa lapas noformējuma aprakstam",
@@ -12,21 +12,28 @@ function atteloHTML() {
     "Tīmekļa lapas programmēšanai",
     "Tīmekļa lapas satura un struktūras aprakstam"
   ];
+  // Nomaina jautājumu
+  document.getElementById("jaut").innerText = jautaajums;
+  // Nomaina atbilžu pogas
+  let atbilzuTeksti = document.getElementsByClassName("atb");
+  for (let i = 0; i < atbilzuTeksti.length; i++) {
+    atbilzuTeksti[i].value = atbildes[i];
+  }
 }
 function nakamais() {
   // Pēc atbildes nospiešanas uztaisa pauzi, parāda infomatīvu logu, ka atbilde pieņemta
 }
 
-function testaJautajumi(){    
-    const url = "https://in24.github.io/zinasanuParbaudesTests/dati/tests.csv";
-    Papa.parse(url, {            
-    download: true, 
-    header: true,          
+function testaJautajumi() {
+  const url = "https://in24.github.io/zinasanuParbaudesTests/dati/tests.csv";
+  Papa.parse(url, {
+    download: true,
+    header: true,
     dynamicTyping: true,
-    delimiter: ";",          
+    delimiter: ";",
     complete: function(results) {
       tests = results;
-    }          
+    }
   });
-  console.log('CSV fails nolasīts');   
+  console.log("CSV fails nolasīts");
 }
