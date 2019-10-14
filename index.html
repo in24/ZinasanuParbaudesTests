@@ -8,18 +8,32 @@
   <body>
     <div id="galva">
       <h1>Zināšanu pārbaudes tests</h1>
-      <p>Izvēlies pareizo atbildi!</p>
+    </div>
+    <div id="sakums">
+      <button class="poga" onClick="atteloHTML()">
+        Sākt testu!
+      </button>
     </div>
     <div class="jautajums">
       <div>Jautājums</div>
     </div>
     <div class="atbildes">
-      <div>1</div>
-      <div>2</div>
-      <div>3</div>
-      <div>4</div>
+      <div>
+        <input type="button" value="1" onclick="nakamais()" class="poga" />
+      </div>
+      <div>
+        <input type="button" value="2" onclick="nakamais()" class="poga" />
+      </div>
+      <div>
+        <input type="button" value="3" onclick="nakamais()" class="poga" />
+      </div>
+      <div>
+        <input type="button" value="4" onclick="nakamais()" class="poga" />
+      </div>
     </div>
-    <div id="rezultats"></div>
+    <div class="rezultats">
+      <div>Testā iegūtie punkti</div>
+    </div>
     <script type="text/javascript" charset="UTF-8" src="js/skripts.js"></script>
     <div id="kaajene">
       <hr width="40%" />
