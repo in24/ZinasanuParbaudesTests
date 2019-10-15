@@ -37,7 +37,7 @@ nomainitJautajumu(testaJautajumi);
 
 function nomainitJautajumu(testaJautajumi){
   // Nomaina jautājumu
-  let j=0; // pagaidu mainīgais testa tekošā jautājuma definēšanai, pagaidām ir 3 jautājumi 0,1,2. vēlāk šis mainīsies automātiski kad būs pāreja pie nākamā jautājuma 
+  let j=0; // pagaidu mainīgais testa tekošā jautājuma definēšanai, pagaidām ir 6 jautājumi 0,1, .., 5. Vēlāk šis mainīsies automātiski kad būs programmēta pāreja pie nākamā jautājuma.
   document.getElementById("jaut").innerText = testaJautajumi[j].jautajums;  
   // Nomaina atbilžu pogas
   let atbilzuTeksti = document.getElementsByClassName("atb");
