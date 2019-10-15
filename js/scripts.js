@@ -1,11 +1,11 @@
 function atteloHTML() {
-  testaJautajumi();
+  testaJautajumiNoCSV();
   /* Funkcija paņem nolasīto jautājumu un 4 atbildes
    * un ieliek to HTML īstajās vietās,
    * izmantojot flexbox */
 
   // pagaidu variants - piešķīru vērtības kā objektam ar atbilžu masīvu, lai var turpināt pārējās funkcijas (Juris)
-  let testaJaut = [
+  let testaJautajumi = [
     {'jautajums': "Kāda jūra apskalo Latvijas krastu?", 'pareiza': "Baltijas jūra", 'atbildes': ["Rīgas jūra", "Ziemeļu jūra","Melnā jūra", "Baltijas jūra"]},
     {'jautajums': "Kura pilsēta ir Latvijas galvaspilsēta?", 'pareiza': "Rīga", 'atbildes': ["Rīga", "Daugavpils", "Ventspils", "Ogre"]},
     {'jautajums': "Kurā Latvijas novadā atrodas Atpūtas ciems?", 'pareiza': "Zemgalē", 'atbildes': ["Latgalē", "Zemgalē","Kurzemē", "Vidzemē"]}
@@ -24,18 +24,18 @@ function atteloHTML() {
 
   // Nomaina jautājumu
   let j=0; // pagaidu mainīgais testa tekošā jautājuma definēšanai, pagaidām ir 3 jautājumi 0,1,2
-  document.getElementById("jaut").innerText = testaJaut[j].jautajums;  
+  document.getElementById("jaut").innerText = testaJautajumi[j].jautajums;  
   // Nomaina atbilžu pogas
   let atbilzuTeksti = document.getElementsByClassName("atb");
-  for (let i = 0; i < testaJaut[j].atbildes.length; i++) {
-    atbilzuTeksti[i].value = testaJaut[j].atbildes[i];
+  for (let i = 0; i < testaJautajumi[j].atbildes.length; i++) {
+    atbilzuTeksti[i].value = testaJautajumi[j].atbildes[i];
   }
 }
 function nakamais() {
   // Pēc atbildes nospiešanas uztaisa pauzi, parāda infomatīvu logu, ka atbilde pieņemta
 }
 
-function testaJautajumi() {
+function testaJautajumiNoCSV() {
   const url = "https://in24.github.io/zinasanuParbaudesTests/dati/tests.csv";
   Papa.parse(url, {
     download: true,
