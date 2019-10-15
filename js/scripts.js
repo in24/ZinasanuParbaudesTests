@@ -1,6 +1,7 @@
 /* Funkcija paņem nolasīto jautājumu un 4 atbildes
    * un ieliek to HTML īstajās vietās,
    * izmantojot flexbox */
+var testaJautajumi;
 
 function atteloHTML() {  
 // pagaidu variants - piešķīru vērtības kā objektam ar atbilžu masīvu, lai var turpināt pārējās funkcijas (Juris)
@@ -22,7 +23,7 @@ let atbildes = [
 */ 
 
 testaJautajumiNoCSV(function(results){
-    testaJautajumi=results.data.map(function(csvJautajums) {
+ testaJautajumi=results.data.map(function(csvJautajums) {
       return {
         'jautajums': csvJautajums.jautajums,
         'pareiza': csvJautajums.pareiza,
