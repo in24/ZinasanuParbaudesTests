@@ -1,8 +1,23 @@
-/* Funkcija paņem nolasīto jautājumu un 4 atbildes
- * un ieliek to HTML īstajās vietās,
- * izmantojot flexbox */
 var testaJautajumi;
 var preloader;
+var jautajums = 0;
+var rezultats = 0;
+
+function pienemAtbildi() {
+  parbaudaAtbildi();
+  rezultataUzskaite();
+}
+
+function rezultataUzskaite() {}
+
+function parbaudaAtbildi() {}
+
+function beidzSpeli() {
+  console.log(jautajums);
+  // pasleepj jautaajumus
+  // paraada rezultaatu
+  //varbuut paraada atkal "sakt speeli" pogu
+}
 
 function atteloHTML() {
   testaJautajumiNoCSV(function(results) {
@@ -18,14 +33,15 @@ function atteloHTML() {
         ]
       };
     });
+    testaJautajumi = shuffle(testaJautajumi);
     console.log(testaJautajumi);
-    nomainitJautajumu(testaJautajumi);
+    nomainitJautajumu(jautajums);
   });
 }
 
-function nomainitJautajumu(testaJautajumi) {
+function nomainitJautajumu(j) {
   // Nomaina jautājumu
-  let j = 0; // pagaidu mainīgais testa tekošā jautājuma definēšanai, pagaidām ir 6 jautājumi 0,1, .., 5. Vēlāk šis mainīsies automātiski kad būs programmēta pāreja pie nākamā jautājuma.
+  testaJautajumi[j].atbildes = shuffle(testaJautajumi[j].atbildes);
   document.getElementById("jaut").innerText = testaJautajumi[j].jautajums;
   // Nomaina atbilžu pogas
   let atbilzuTeksti = document.getElementsByClassName("atb");
@@ -35,13 +51,23 @@ function nomainitJautajumu(testaJautajumi) {
 }
 
 function nakamais() {
+  // Pēc atbildes nospiešanas uztaisa pauzi, parāda infomatīvu logu, ka atbilde pieņemta
   preloader = document.querySelector(".preloader");
   preloader.style.opacity = 1;
   preloader.classList.remove("behind");
   preloader.classList.add("front");
   fadeEffect();
-  //preloader.classList.replace("front", "behind");
-  // Pēc atbildes nospiešanas uztaisa pauzi, parāda infomatīvu logu, ka atbilde pieņemta
+  // nomainaam tekstu kad ir vistumshaakais :)
+  setTimeout(function() {
+    if (jautajums < testaJautajumi.length - 1) {
+      // liekam jaunu (naakamo) bildi iekshaa
+      jautajums += 1;
+      nomainitJautajumu(jautajums);
+    } else {
+      // jautajumi beigushies!
+      beidzSpeli();
+    }
+  }, 1000);
 }
 
 function testaJautajumiNoCSV(callback) {
@@ -70,4 +96,17 @@ function fadeEffect() {
   setTimeout(function() {
     preloader.classList.replace("front", "behind");
   }, 2000);
+}
+
+// Fisher–Yates sajaukšanas algoritms masīvam
+//https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
+function shuffle(mas) {
+  var j, x, i;
+  for (i = mas.length - 1; i > 0; i--) {
+    j = Math.floor(Math.random() * (i + 1));
+    x = mas[i];
+    mas[i] = mas[j];
+    mas[j] = x;
+  }
+  return mas;
 }
