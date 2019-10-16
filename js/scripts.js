@@ -52,7 +52,6 @@ nomainitJautajumu(testaJautajumi);
 
 }
 
-
 function nomainitJautajumu(testaJautajumi){
   // Nomaina jautājumu
   let j=5; // pagaidu mainīgais testa tekošā jautājuma definēšanai, pagaidām ir 6 jautājumi 0,1, .., 5. Vēlāk šis mainīsies automātiski kad būs programmēta pāreja pie nākamā jautājuma.
@@ -83,6 +82,7 @@ function testaJautajumiNoCSV(callback) {
   console.log("CSV fails nolasīts");
 }
 
+// Fisher–Yates sajaukšanas algoritms masīvam
 function shuffle(mas) {
   var j, x, i;
   for (i = mas.length - 1; i > 0; i--) {
