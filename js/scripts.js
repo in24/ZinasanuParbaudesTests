@@ -52,16 +52,6 @@ nomainitJautajumu(testaJautajumi);
 
 }
 
-function shuffle(mas) {
-    var j, x, i;
-    for (i = mas.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = mas[i];
-        mas[i] = mas[j];
-        mas[j] = x;
-    }
-    return mas;
-}
 
 function nomainitJautajumu(testaJautajumi){
   // Nomaina jautājumu
@@ -91,4 +81,15 @@ function testaJautajumiNoCSV(callback) {
     }
   });
   console.log("CSV fails nolasīts");
+}
+
+function shuffle(mas) {
+  var j, x, i;
+  for (i = mas.length - 1; i > 0; i--) {
+      j = Math.floor(Math.random() * (i + 1));
+      x = mas[i];
+      mas[i] = mas[j];
+      mas[j] = x;
+  }
+  return mas;
 }
