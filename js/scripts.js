@@ -3,6 +3,21 @@
    * izmantojot flexbox */
 var testaJautajumi;
 
+function pienemAtbildi(){
+  parbaudaAtbildi();
+  rezultataUzskaite();
+
+}
+
+function rezultataUzskaite(){
+
+}
+
+function parbaudaAtbildi(){
+
+}
+
+
 function atteloHTML() {  
 // pagaidu variants - piešķīru vērtības kā objektam ar atbilžu masīvu, lai var turpināt pārējās funkcijas (Juris)
 /*let testaJautajumi = [
@@ -30,15 +45,28 @@ testaJautajumiNoCSV(function(results){
         'atbildes': [csvJautajums.atbilde1, csvJautajums.atbilde2, csvJautajums.atbilde3, csvJautajums.atbilde4]
       }
     });
+testaJautajumi=shuffle(testaJautajumi);
 console.log(testaJautajumi);
 nomainitJautajumu(testaJautajumi);
 });
 
 }
 
+function shuffle(mas) {
+    var j, x, i;
+    for (i = mas.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = mas[i];
+        mas[i] = mas[j];
+        mas[j] = x;
+    }
+    return mas;
+}
+
 function nomainitJautajumu(testaJautajumi){
   // Nomaina jautājumu
-  let j=0; // pagaidu mainīgais testa tekošā jautājuma definēšanai, pagaidām ir 6 jautājumi 0,1, .., 5. Vēlāk šis mainīsies automātiski kad būs programmēta pāreja pie nākamā jautājuma.
+  let j=5; // pagaidu mainīgais testa tekošā jautājuma definēšanai, pagaidām ir 6 jautājumi 0,1, .., 5. Vēlāk šis mainīsies automātiski kad būs programmēta pāreja pie nākamā jautājuma.
+  testaJautajumi[j].atbildes=shuffle(testaJautajumi[j].atbildes);
   document.getElementById("jaut").innerText = testaJautajumi[j].jautajums;  
   // Nomaina atbilžu pogas
   let atbilzuTeksti = document.getElementsByClassName("atb");
