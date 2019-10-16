@@ -83,6 +83,7 @@ function testaJautajumiNoCSV(callback) {
 }
 
 // Fisher–Yates sajaukšanas algoritms masīvam
+//https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
 function shuffle(mas) {
   var j, x, i;
   for (i = mas.length - 1; i > 0; i--) {
