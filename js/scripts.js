@@ -11,6 +11,7 @@ function pienemAtbildi() {
 function rezultataUzskaite() {
   if(document.activeElement.value == testaJautajumi[jautajums].pareiza){
     rezultats++;
+  }
 }
 
 function parbaudaAtbildi() {}
