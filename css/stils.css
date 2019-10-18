@@ -2,27 +2,30 @@ body {
   background-color: #a15721;
   color: #decdbf;
 }
-#kaajene {
-  text-align: center;
+.saturs {
+  position: relative;
+  z-index: 1;
 }
-#galva {
+#kaajene,
+#galva,
+#sakums {
   text-align: center;
 }
 p {
   font-size: larger;
 }
-.jautajums {
+.jautajums,
+.rezultats {
   display: flex;
-  background-color: #decdbf;
   justify-content: center;
 }
 .atbildes {
   display: flex;
   flex-flow: row wrap;
-  background-color: #decdbf;
   justify-content: center;
 }
-.jautajums > div {
+.jautajums > div,
+.rezultats > div {
   background-color: #a15721;
   width: 97%;
   margin: 10px;
@@ -37,4 +40,41 @@ p {
   text-align: center;
   line-height: 75px;
   font-size: 30px;
+}
+.poga {
+  background-color: #decdbf;
+  font-size: 24px;
+  padding: 32px 32px;
+  border: none;
+  color: #a15721;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 4px;
+  cursor: pointer;
+  width: 97%;
+}
+.poga:hover {
+  background-color: #a15721;
+  color: #decdbf;
+  border: 2px solid #decdbf;
+}
+.preloader {
+  align-items: center;
+  background: rgb(23, 22, 22);
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  width: 100%;
+}
+.behind {
+  z-index: -1;
+}
+.front {
+  z-index: 9999;
 }
