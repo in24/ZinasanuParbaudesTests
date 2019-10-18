@@ -8,7 +8,10 @@ function pienemAtbildi() {
   rezultataUzskaite();
 }
 
-function rezultataUzskaite() {}
+function rezultataUzskaite() {
+  if(document.activeElement.value == testaJautajumi[jautajums].pareiza){
+    rezultats++;
+}
 
 function parbaudaAtbildi() {}
 
@@ -56,6 +59,7 @@ function nakamais() {
   preloader.style.opacity = 1;
   preloader.classList.remove("behind");
   preloader.classList.add("front");
+  pienemAtbildi();
   fadeEffect();
   // nomainaam tekstu kad ir vistumshaakais :)
   setTimeout(function() {
