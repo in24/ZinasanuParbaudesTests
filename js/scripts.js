@@ -2,7 +2,7 @@ var testaJautajumi;
 var preloader;
 var jautajums = 0;
 var rezultats = 0;
-var pareiza=[];
+var pareiza=[]; // pareizo atbilžu masīvs
 
 function pienemAtbildi() {
   parbaudaAtbildi();
