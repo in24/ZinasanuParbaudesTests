@@ -30,7 +30,7 @@ p {
   width: 97%;
   margin: 10px;
   text-align: center;
-  line-height: 75px;
+  line-height: 35px;
   font-size: 30px;
 }
 .atbildes > div {
@@ -38,13 +38,13 @@ p {
   width: 48%;
   margin: 10px;
   text-align: center;
-  line-height: 75px;
+  line-height: 35px;
   font-size: 30px;
 }
 .poga {
   background-color: #decdbf;
   font-size: 24px;
-  padding: 32px 32px;
+  padding: 32px 0px;
   border: none;
   color: #a15721;
   text-align: center;
