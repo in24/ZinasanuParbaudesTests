@@ -2,6 +2,7 @@ var testaJautajumi;
 var preloader;
 var jautajums = 0;
 var rezultats = 0;
+var pareiza=[];
 
 function pienemAtbildi() {
   parbaudaAtbildi();
@@ -27,15 +28,14 @@ function atteloHTML() {
   testaJautajumiNoCSV(function(results) {
     testaJautajumi = results.data.map(function(csvJautajums) {
       return {
-        jautajums: csvJautajums.jautajums,
-        pareiza: csvJautajums.pareiza,
+        jautajums: csvJautajums.jautajums,        
         atbildes: [
           csvJautajums.atbilde1,
           csvJautajums.atbilde2,
           csvJautajums.atbilde3,
           csvJautajums.atbilde4
         ]
-      };
+      };      
     });
     testaJautajumi = shuffle(testaJautajumi);
     console.log(testaJautajumi);
@@ -45,6 +45,8 @@ function atteloHTML() {
 
 function nomainitJautajumu(j) {
   // Nomaina jautājumu
+  pareiza[j] = testaJautajumi[j].atbilde1;
+  console.log('Pareizā atbilde ' + pareiza[j]);
   testaJautajumi[j].atbildes = shuffle(testaJautajumi[j].atbildes);
   document.getElementById("jaut").innerText = testaJautajumi[j].jautajums;
   // Nomaina atbilžu pogas
