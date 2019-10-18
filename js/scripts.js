@@ -19,11 +19,14 @@ function parbaudaAtbildi() {}
 function beidzSpeli() {
   console.log(jautajums);
   // pasleepj jautaajumus
+  sleptDIV("jaut");
   // paraada rezultaatu
+  raditDIV("rezult");
   //varbuut paraada atkal "sakt speeli" pogu
 }
 
 function atteloHTML() {
+  sleptDIV("sakums");
   testaJautajumiNoCSV(function(results) {
     testaJautajumi = results.data.map(function(csvJautajums) {
       return {
@@ -39,6 +42,7 @@ function atteloHTML() {
     });
     testaJautajumi = shuffle(testaJautajumi);
     console.log(testaJautajumi);
+    raditDIV("jaut");
     nomainitJautajumu(jautajums);
   });
 }
@@ -114,4 +118,30 @@ function shuffle(mas) {
     mas[j] = x;
   }
   return mas;
+}
+
+function raditDIV(id) {
+  let rada = document.getElementById(id);
+  rada.hidden = false;
+}
+
+function sleptDIV(id) {
+  let slepj = document.getElementById(id);
+  slepj.hidden = true;
+}
+
+function raditPogu(klase) {
+  let rada = document.getElementsByClassName(klase);
+  for (let i = 0; i < 4; i++) {
+    rada[i].style.display = "flex";
+    rada[i].hidden = false;
+  }
+}
+
+function sleptPogu(klase) {
+  let slepj = document.getElementsByClassName(klase);
+  for (let i = 0; i < 4; i++) {
+    slepj[i].style.display = "none";
+    slepj[i].hidden= true;
+  }
 }
