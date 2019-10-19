@@ -8,6 +8,7 @@ var pareiza=[]; // pareizo atbilžu masīvs
 //function atverotTestu() {
 //  document.getElementById("atbil").innerText = "";
 //}
+sleptPogu();
 
 function pienemAtbildi() {
   rezultataUzskaite(jautajums);
@@ -146,18 +147,23 @@ function sleptDIV(id) {
   slepj.hidden = true;
 }
 
-function raditPogu(klase) {
-  let rada = document.getElementsByClassName(klase);
-  for (let i = 0; i < 4; i++) {
-    rada[i].style.display = "flex";
-    rada[i].hidden = false;
+function raditPogu() {
+  let saktDIV=document.getElementById("sakums");
+  saktDIV.style.display="flex";
   }
 }
 
-function sleptPogu(klase) {
-  let slepj = document.getElementsByClassName(klase);
-  for (let i = 0; i < 4; i++) {
-    slepj[i].style.display = "none";
-    slepj[i].hidden= true;
+function sleptPogu() {
+  let saktDIV=document.getElementById("sakums");
+  saktDIV.style.display="none";
   }
 }
+
+/*
+saktDIV=document.getElementById("sakums");
+atbildesDIV=document.getElementById("atbil");
+a.style.display="none"
+a.style.display="block"
+a.style.display="flex"
+
+*/
