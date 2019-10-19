@@ -31,7 +31,7 @@ function beidzSpeli() {
   console.log('Testā ieguvi ' + rezultats + ' punktus no '+ jautajums +' jautājumiem!');
   let p="";
   for (let i=0;i<jautajums;i++){
-  p=p+(i+1)+". "+pareiza[i]+";<br>";
+  p = p + (i+1) + ". " + testaJautajumi[i].jautajums +" - " +pareiza[i]+";<br>";
   }
   document.getElementById("rezult").innerHTML = "Testā iegūtie punkti - " + rezultats + " no " + jautajums + " jautājumiem. <br>Pareizās atbildes - <br>" + p;
   // paraada atkal "sakt speeli" pogu
