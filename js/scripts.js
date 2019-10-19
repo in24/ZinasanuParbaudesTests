@@ -26,14 +26,14 @@ function beidzSpeli() {
   // paraada rezultaatu
   raditDIV("rezult");
   document.getElementById("atbil").innerText = "";
-  // document.getElementById("jaut").innerText = "Tests beidzies!";
+  document.getElementById("jaut").innerText = "Tests beidzies!";
   jautajums+=1;
   console.log('Testā ieguvi ' + rezultats + ' punktus no '+ jautajums +' jautājumiem!');
   let p="";
   for (let i=0;i<jautajums;i++){
   p=p+(i+1)+". "+pareiza[i]+";<br>";
   }
-  document.getElementById("iegutie").innerHTML = "Testā iegūtie punkti - " + rezultats + " no " + jautajums + " jautājumiem. <br>Pareizās atbildes - <br>" + p;
+  document.getElementById("rezult").innerHTML = "Testā iegūtie punkti - " + rezultats + " no " + jautajums + " jautājumiem. <br>Pareizās atbildes - <br>" + p;
   // paraada atkal "sakt speeli" pogu
   raditDIV("sakums");
 }
