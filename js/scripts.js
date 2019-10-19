@@ -2,27 +2,40 @@ var testaJautajumi;
 var preloader;
 var jautajums = 0;
 var rezultats = 0;
+var pareiza=[]; // pareizo atbilžu masīvs
+
+//window.onload = atverotTestu;
+//function atverotTestu() {
+//  document.getElementById("atbil").innerText = "";
+//}
 
 function pienemAtbildi() {
-  parbaudaAtbildi();
-  rezultataUzskaite();
+  rezultataUzskaite(jautajums);
 }
 
 function rezultataUzskaite() {
-  if (document.activeElement.value == testaJautajumi[jautajums].pareiza) {
+  console.log(document.activeElement.value + ' - ' + pareiza[jautajums]);
+  if (document.activeElement.value == pareiza[jautajums]) {
     rezultats++;
-  }
+  }  
 }
 
-function parbaudaAtbildi() {}
-
 function beidzSpeli() {
-  console.log(jautajums);
   // pasleepj jautaajumus
   sleptDIV("jaut");
   // paraada rezultaatu
   raditDIV("rezult");
-  //varbuut paraada atkal "sakt speeli" pogu
+  document.getElementById("atbil").innerText = "";
+  // document.getElementById("jaut").innerText = "Tests beidzies!";
+  jautajums+=1;
+  console.log('Testā ieguvi ' + rezultats + ' punktus no '+ jautajums +' jautājumiem!');
+  let p="";
+  for (let i=0;i<jautajums;i++){
+  p=p+(i+1)+". "+pareiza[i]+";<br>";
+  }
+  document.getElementById("iegutie").innerHTML = "Testā iegūtie punkti - " + rezultats + " no " + jautajums + " jautājumiem. <br>Pareizās atbildes - <br>" + p;
+  // paraada atkal "sakt speeli" pogu
+  raditDIV("sakums");
 }
 
 function atteloHTML() {
@@ -30,32 +43,34 @@ function atteloHTML() {
   testaJautajumiNoCSV(function(results) {
     testaJautajumi = results.data.map(function(csvJautajums) {
       return {
-        jautajums: csvJautajums.jautajums,
-        pareiza: csvJautajums.pareiza,
+        jautajums: csvJautajums.jautajums,        
         atbildes: [
           csvJautajums.atbilde1,
           csvJautajums.atbilde2,
           csvJautajums.atbilde3,
           csvJautajums.atbilde4
         ]
-      };
+      };      
     });
     testaJautajumi = shuffle(testaJautajumi);
     console.log(testaJautajumi);
     raditDIV("jaut");
     nomainitJautajumu(jautajums);
   });
+  document.getElementById("sakums").innerText = "";
 }
 
-function nomainitJautajumu(j) {
+function nomainitJautajumu() {
   // Nomaina jautājumu
-  testaJautajumi[j].atbildes = shuffle(testaJautajumi[j].atbildes);
-  document.getElementById("jaut").innerText = testaJautajumi[j].jautajums;
+  pareiza[jautajums] = testaJautajumi[jautajums].atbildes[0];
+  console.log('Pareizā atbilde: ' + pareiza[jautajums]+ ', j=' +jautajums);
+  testaJautajumi[jautajums].atbildes = shuffle(testaJautajumi[jautajums].atbildes);
+  document.getElementById("jaut").innerText = (jautajums+1) + ". " + testaJautajumi[jautajums].jautajums;
   // Nomaina atbilžu pogas
   let atbilzuTeksti = document.getElementsByClassName("atb");
-  for (let i = 0; i < testaJautajumi[j].atbildes.length; i++) {
-    atbilzuTeksti[i].value = testaJautajumi[j].atbildes[i];
-  }
+  for (let i = 0; i < testaJautajumi[jautajums].atbildes.length; i++) {
+    atbilzuTeksti[i].value = testaJautajumi[jautajums].atbildes[i];
+  }  
 }
 
 function nakamais() {
@@ -107,15 +122,16 @@ function fadeEffect() {
   }, 2000);
 }
 
+
+function shuffle(mas) {
 // Fisher–Yates sajaukšanas algoritms masīvam
 //https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
-function shuffle(mas) {
-  var j, x, i;
+  var k, x, i;
   for (i = mas.length - 1; i > 0; i--) {
-    j = Math.floor(Math.random() * (i + 1));
+    k = Math.floor(Math.random() * (i + 1));
     x = mas[i];
-    mas[i] = mas[j];
-    mas[j] = x;
+    mas[i] = mas[k];
+    mas[k] = x;
   }
   return mas;
 }
