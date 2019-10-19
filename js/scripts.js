@@ -4,11 +4,14 @@ var jautajums = 0;
 var rezultats = 0;
 var pareiza=[]; // pareizo atbilžu masīvs
 
-//window.onload = atverotTestu;
-//function atverotTestu() {
+
+window.onload = atverotTestu;
+function atverotTestu() {
 //  document.getElementById("atbil").innerText = "";
-//}
-sleptPogu();
+slept("atbil");
+
+}
+
 
 function pienemAtbildi() {
   rezultataUzskaite(jautajums);
@@ -23,9 +26,9 @@ function rezultataUzskaite() {
 
 function beidzSpeli() {
   // pasleepj jautaajumus
-  sleptDIV("jaut");
+ // sleptDIV("jaut");
   // paraada rezultaatu
-  raditDIV("rezult");
+ radit("rezult");
   document.getElementById("atbil").innerText = "";
   document.getElementById("jaut").innerText = "Tests beidzies!";
   jautajums+=1;
@@ -36,11 +39,12 @@ function beidzSpeli() {
   }
   document.getElementById("rezult").innerHTML = "Testā iegūtie punkti - " + rezultats + " no " + jautajums + " jautājumiem. <br>Pareizās atbildes - <br>" + p;
   // paraada atkal "sakt speeli" pogu
-  raditDIV("sakums");
+//  raditDIV("sakums");
 }
 
 function atteloHTML() {
-  sleptDIV("sakums");
+raditDIV("atbil");
+radit("jaut");
   testaJautajumiNoCSV(function(results) {
     testaJautajumi = results.data.map(function(csvJautajums) {
       return {
@@ -55,7 +59,7 @@ function atteloHTML() {
     });
     testaJautajumi = shuffle(testaJautajumi);
     console.log(testaJautajumi);
-    raditDIV("jaut");
+//    raditDIV("jaut");
     nomainitJautajumu(jautajums);
   });
   document.getElementById("sakums").innerText = "";
@@ -137,27 +141,25 @@ function shuffle(mas) {
   return mas;
 }
 
-function raditDIV(id) {
-  let rada = document.getElementById(id);
-  rada.hidden = false;
+function raditDIV(s) {
+  document.getElementById(s).style.display='flex';
 }
 
-function sleptDIV(id) {
-  let slepj = document.getElementById(id);
-  slepj.hidden = true;
+function sleptDIV(s) {
+  document.getElementById(s).style.display='none';
 }
 
-function raditPogu() {
-  let saktDIV=document.getElementById("sakums");
-  saktDIV.style.display="flex";
+function radit(s) {
+  //document.getElementById(s).hidden = 0;
+ document.getElementById(s).style.display='block';
   }
-}
 
-function sleptPogu() {
-  let saktDIV=document.getElementById("sakums");
-  saktDIV.style.display="none";
+
+function slept(s) {
+//  document.getElementById(s).hidden = 1;
+  document.getElementById(s).style.display='none';
   }
-}
+
 
 /*
 saktDIV=document.getElementById("sakums");
