@@ -22,10 +22,11 @@ function rezultataUzskaite() {
 
 function beidzSpeli() {
   // pasleepj jautaajumus
-  document.getElementById("atbil").innerText = "";
-  document.getElementById("jaut").innerText = "Tests beidzies!";
-
+  sleptDIV("jaut");
   // paraada rezultaatu
+  raditDIV("rezult");
+  document.getElementById("atbil").innerText = "";
+  // document.getElementById("jaut").innerText = "Tests beidzies!";
   jautajums+=1;
   console.log('Testā ieguvi ' + rezultats + ' punktus no '+ jautajums +' jautājumiem!');
   let p="";
@@ -33,11 +34,12 @@ function beidzSpeli() {
   p=p+(i+1)+". "+pareiza[i]+";<br>";
   }
   document.getElementById("iegutie").innerHTML = "Testā iegūtie punkti - " + rezultats + " no " + jautajums + " jautājumiem. <br>Pareizās atbildes - <br>" + p;
-  
-  //varbuut paraada atkal "sakt speeli" pogu
+  // paraada atkal "sakt speeli" pogu
+  raditDIV("sakums");
 }
 
 function atteloHTML() {
+  sleptDIV("sakums");
   testaJautajumiNoCSV(function(results) {
     testaJautajumi = results.data.map(function(csvJautajums) {
       return {
@@ -52,6 +54,7 @@ function atteloHTML() {
     });
     testaJautajumi = shuffle(testaJautajumi);
     console.log(testaJautajumi);
+    raditDIV("jaut");
     nomainitJautajumu(jautajums);
   });
   document.getElementById("sakums").innerText = "";
@@ -131,4 +134,30 @@ function shuffle(mas) {
     mas[k] = x;
   }
   return mas;
+}
+
+function raditDIV(id) {
+  let rada = document.getElementById(id);
+  rada.hidden = false;
+}
+
+function sleptDIV(id) {
+  let slepj = document.getElementById(id);
+  slepj.hidden = true;
+}
+
+function raditPogu(klase) {
+  let rada = document.getElementsByClassName(klase);
+  for (let i = 0; i < 4; i++) {
+    rada[i].style.display = "flex";
+    rada[i].hidden = false;
+  }
+}
+
+function sleptPogu(klase) {
+  let slepj = document.getElementsByClassName(klase);
+  for (let i = 0; i < 4; i++) {
+    slepj[i].style.display = "none";
+    slepj[i].hidden= true;
+  }
 }
