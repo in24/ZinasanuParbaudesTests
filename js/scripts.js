@@ -50,6 +50,8 @@ function beidzSpeli() {
 }
 
 function atteloHTML() {
+  preloader = document.querySelector(".preloader");
+  fadeEffect(1, 500, 1000);
   raditDIV("atbil");
   radit("jaut");
   testaJautajumiNoCSV(function(results) {
@@ -93,7 +95,7 @@ function nakamais() {
   // Pēc atbildes nospiešanas uztaisa pauzi, parāda infomatīvu logu, ka atbilde pieņemta
   preloader = document.querySelector(".preloader");
   pienemAtbildi();
-  fadeEffect();
+  fadeEffect(1, 1000, 2000);
   // nomainaam tekstu kad ir vistumshaakais :)
   setTimeout(function() {
     if (jautajums < testaJautajumi.length - 1) {
@@ -121,18 +123,18 @@ function testaJautajumiNoCSV(callback) {
   console.log("CSV fails nolasīts");
 }
 
-function fadeEffect() {
+function fadeEffect(o, t1, t2) {
   preloader.classList.replace("behind", "front");
   // saakas transition no opacity 0->1, 1 sekundi ilga
-  preloader.style.opacity = 1;
+  preloader.style.opacity = o;
   // taapeec uzliekam timeout uz 1000ms, kad saakam transition 1->0
   setTimeout(function() {
     preloader.style.opacity = 0;
-  }, 1000);
+  }, t1);
   // otraa transition beidzas peec 2s, aizvaacam, lai netraucee spiest pogas
   setTimeout(function() {
     preloader.classList.replace("front", "behind");
-  }, 2000);
+  }, t2);
 }
 
 function shuffle(mas) {
