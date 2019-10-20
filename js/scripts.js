@@ -38,14 +38,14 @@ function beidzSpeli() {
       testaJautajumi[i].jautajums +
       " - " +
       pareiza[i] +
-      ";<br>";
+      "<br>";
   }
   document.getElementById("rezult").innerHTML =
     "Testā iegūtie punkti - " +
     rezultats +
     " no " +
     jautajums +
-    " jautājumiem. <br>Pareizās atbildes:<br>" +
+    ". <br>Pareizās atbildes:<br>" +
     p;
 }
 
