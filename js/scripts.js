@@ -110,7 +110,7 @@ function nakamais() {
 }
 
 function testaJautajumiNoCSV(callback) {
-  const url = "https://in24.github.io/zinasanuParbaudesTests/dati/tests.csv";
+  const url = "https://in24.github.io/zinasanuParbaudesTests/dati/grafika.csv";
   Papa.parse(url, {
     download: true,
     header: true,
