@@ -53,6 +53,7 @@ p {
   margin: 4px 4px;
   cursor: pointer;
   width: 97%;
+  border: 2px solid #decdbf;
 }
 .poga:hover {
   background-color: #a15721;
