@@ -2,85 +2,100 @@ var testaJautajumi;
 var preloader;
 var jautajums = 0;
 var rezultats = 0;
-var pareiza=[]; // pareizo atbilžu masīvs
+var pareiza = []; // pareizo atbilžu masīvs
 
-//window.onload = atverotTestu;
-//function atverotTestu() {
-//  document.getElementById("atbil").innerText = "";
-//}
+// atverot testu nerāda atbilžu pogas
+window.onload = atverotTestu;
+function atverotTestu() {
+  slept("atbil");
+}
 
 function pienemAtbildi() {
   rezultataUzskaite(jautajums);
 }
 
 function rezultataUzskaite() {
-  console.log(document.activeElement.value + ' - ' + pareiza[jautajums]);
+  console.log(document.activeElement.value + " - " + pareiza[jautajums]);
   if (document.activeElement.value == pareiza[jautajums]) {
     rezultats++;
-  }  
+  }
 }
 
 function beidzSpeli() {
-  // pasleepj jautaajumus
-  sleptDIV("jaut");
-  // paraada rezultaatu
-  raditDIV("rezult");
-  document.getElementById("atbil").innerText = "";
+  slept("atbil");
+  radit("rezult");
   document.getElementById("jaut").innerText = "Tests beidzies!";
-  jautajums+=1;
-  console.log('Testā ieguvi ' + rezultats + ' punktus no '+ jautajums +' jautājumiem!');
-  let p="";
-  for (let i=0;i<jautajums;i++){
-  p = p + (i+1) + ". " + testaJautajumi[i].jautajums +" - " +pareiza[i]+";<br>";
+  jautajums += 1;
+  console.log(
+    "Testā ieguvi " + rezultats + " punktus no " + jautajums + " jautājumiem!"
+  );
+  let p = "";
+  for (let i = 0; i < jautajums; i++) {
+    p =
+      p +
+      (i + 1) +
+      ". " +
+      testaJautajumi[i].jautajums +
+      " - " +
+      pareiza[i] +
+      ";<br>";
   }
-  document.getElementById("rezult").innerHTML = "Testā iegūtie punkti - " + rezultats + " no " + jautajums + " jautājumiem. <br>Pareizās atbildes - <br>" + p;
-  // paraada atkal "sakt speeli" pogu
-  raditDIV("sakums");
+  document.getElementById("rezult").innerHTML =
+    "Testā iegūtie punkti - " +
+    rezultats +
+    " no " +
+    jautajums +
+    " jautājumiem. <br>Pareizās atbildes:<br>" +
+    p;
 }
 
 function atteloHTML() {
-  sleptDIV("sakums");
+  preloader = document.querySelector(".preloader");
+  fadeEffect(1, 500, 1000);
+  raditDIV("atbil");
+  radit("jaut");
   testaJautajumiNoCSV(function(results) {
     testaJautajumi = results.data.map(function(csvJautajums) {
       return {
-        jautajums: csvJautajums.jautajums,        
+        jautajums: csvJautajums.jautajums,
         atbildes: [
           csvJautajums.atbilde1,
           csvJautajums.atbilde2,
           csvJautajums.atbilde3,
           csvJautajums.atbilde4
         ]
-      };      
+      };
     });
     testaJautajumi = shuffle(testaJautajumi);
     console.log(testaJautajumi);
-    raditDIV("jaut");
     nomainitJautajumu(jautajums);
   });
-  document.getElementById("sakums").innerText = "";
+  // kad sākas tests poga par testa sākšanu un rezultāts tiek paslēpta
+  slept("sakums");
+  slept("rezult");
 }
 
 function nomainitJautajumu() {
   // Nomaina jautājumu
   pareiza[jautajums] = testaJautajumi[jautajums].atbildes[0];
-  console.log('Pareizā atbilde: ' + pareiza[jautajums]+ ', j=' +jautajums);
-  testaJautajumi[jautajums].atbildes = shuffle(testaJautajumi[jautajums].atbildes);
-  document.getElementById("jaut").innerText = (jautajums+1) + ". " + testaJautajumi[jautajums].jautajums;
+  console.log("Pareizā atbilde: " + pareiza[jautajums] + ", j=" + jautajums);
+  testaJautajumi[jautajums].atbildes = shuffle(
+    testaJautajumi[jautajums].atbildes
+  );
+  document.getElementById("jaut").innerText =
+    jautajums + 1 + ". " + testaJautajumi[jautajums].jautajums;
   // Nomaina atbilžu pogas
   let atbilzuTeksti = document.getElementsByClassName("atb");
   for (let i = 0; i < testaJautajumi[jautajums].atbildes.length; i++) {
     atbilzuTeksti[i].value = testaJautajumi[jautajums].atbildes[i];
-  }  
+  }
 }
 
 function nakamais() {
   // Pēc atbildes nospiešanas uztaisa pauzi, parāda infomatīvu logu, ka atbilde pieņemta
   preloader = document.querySelector(".preloader");
-  preloader.style.opacity = 1;
-  preloader.classList.remove("behind");
-  preloader.classList.add("front");
   pienemAtbildi();
-  fadeEffect();
+  fadeEffect(1, 1000, 2000);
   // nomainaam tekstu kad ir vistumshaakais :)
   setTimeout(function() {
     if (jautajums < testaJautajumi.length - 1) {
@@ -108,24 +123,23 @@ function testaJautajumiNoCSV(callback) {
   console.log("CSV fails nolasīts");
 }
 
-function fadeEffect() {
+function fadeEffect(o, t1, t2) {
   preloader.classList.replace("behind", "front");
   // saakas transition no opacity 0->1, 1 sekundi ilga
-  preloader.style.opacity = 1;
+  preloader.style.opacity = o;
   // taapeec uzliekam timeout uz 1000ms, kad saakam transition 1->0
   setTimeout(function() {
     preloader.style.opacity = 0;
-  }, 1000);
+  }, t1);
   // otraa transition beidzas peec 2s, aizvaacam, lai netraucee spiest pogas
   setTimeout(function() {
     preloader.classList.replace("front", "behind");
-  }, 2000);
+  }, t2);
 }
 
-
 function shuffle(mas) {
-// Fisher–Yates sajaukšanas algoritms masīvam
-//https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
+  // Fisher–Yates sajaukšanas algoritms masīvam
+  //https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
   var k, x, i;
   for (i = mas.length - 1; i > 0; i--) {
     k = Math.floor(Math.random() * (i + 1));
@@ -136,28 +150,15 @@ function shuffle(mas) {
   return mas;
 }
 
-function raditDIV(id) {
-  let rada = document.getElementById(id);
-  rada.hidden = false;
+function raditDIV(s) {
+  document.getElementById(s).style.display = "flex";
 }
 
-function sleptDIV(id) {
-  let slepj = document.getElementById(id);
-  slepj.hidden = true;
+function radit(s) {
+  //document.getElementById(s).hidden = 0;
+  document.getElementById(s).style.display = "block";
 }
 
-function raditPogu(klase) {
-  let rada = document.getElementsByClassName(klase);
-  for (let i = 0; i < 4; i++) {
-    rada[i].style.display = "flex";
-    rada[i].hidden = false;
-  }
-}
-
-function sleptPogu(klase) {
-  let slepj = document.getElementsByClassName(klase);
-  for (let i = 0; i < 4; i++) {
-    slepj[i].style.display = "none";
-    slepj[i].hidden= true;
-  }
+function slept(s) {
+  document.getElementById(s).style.display = "none";
 }
