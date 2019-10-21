@@ -24,14 +24,21 @@ p {
   flex-flow: row wrap;
   justify-content: center;
 }
-.jautajums > div,
-.rezultats > div {
+.jautajums > div {
   background-color: #a15721;
   width: 97%;
   margin: 10px;
   text-align: center;
   line-height: 35px;
-  font-size: 30px;
+  font-size: 24px;
+}
+.rezultats > div {
+  background-color: #a15721;
+  width: 97%;
+  margin: 10px;
+  text-align: left;
+  line-height: 35px;
+  font-size: 24px;
 }
 .atbildes > div {
   background-color: #a15721;
@@ -39,11 +46,11 @@ p {
   margin: 10px;
   text-align: center;
   line-height: 35px;
-  font-size: 30px;
+  font-size: 24px;
 }
 .poga {
   background-color: #decdbf;
-  font-size: 24px;
+  font-size: 22px;
   padding: 32px 10px;
   border: none;
   color: #a15721;
