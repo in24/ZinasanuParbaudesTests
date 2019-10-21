@@ -16,7 +16,7 @@ function pienemAtbildi() {
 
 function rezultataUzskaite() {
   console.log(document.activeElement.value + " - " + pareiza[jautajums]);
-  if (document.activeElement.value == pareiza[jautajums]) {
+  if (document.activeElement.textContent == pareiza[jautajums]) {
     rezultats++;
   }
 }
@@ -85,9 +85,9 @@ function nomainitJautajumu() {
   document.getElementById("jaut").innerText =
     jautajums + 1 + ". " + testaJautajumi[jautajums].jautajums;
   // Nomaina atbilžu pogas
-  let atbilzuTeksti = document.getElementsByClassName("atb");
+  let atbilzuTeksti = document.getElementsByClassName("atbilde");
   for (let i = 0; i < testaJautajumi[jautajums].atbildes.length; i++) {
-    atbilzuTeksti[i].value = testaJautajumi[jautajums].atbildes[i];
+    atbilzuTeksti[i].innerText = testaJautajumi[jautajums].atbildes[i];
   }
 }
 
