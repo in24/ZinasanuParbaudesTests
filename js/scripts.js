@@ -1,3 +1,7 @@
+var testuDati = '{"tests":[' +
+'{"nosaukums":"Tests par grafiku","failaURL":"https://in24.github.io/zinasanuParbaudesTests/dati/grafika1.csv" },' +
+'{"nosaukums":"Tests par HTML","failaURL":"https://in24.github.io/zinasanuParbaudesTests/dati/html1.csv" },' +
+'{"nosaukums":"Ģeogrāfijas zināšanu tests","failaURL":"https://in24.github.io/zinasanuParbaudesTests/dati/geografija1.csv" }]}';
 var testaJautajumi;
 var preloader;
 var jautajums = 0;
@@ -110,12 +114,7 @@ function nakamais() {
 }
 
 function testaJautajumiNoCSV(callback) {
-let testuDati = '{"tests":[' +
-'{"nosaukums":"Tests par grafiku","failaURL":"https://in24.github.io/zinasanuParbaudesTests/dati/grafika1.csv" },' +
-'{"nosaukums":"Tests par HTML","failaURL":"https://in24.github.io/zinasanuParbaudesTests/dati/html1.csv" },' +
-'{"nosaukums":"Ģeogrāfijas zināšanu tests","failaURL":"https://in24.github.io/zinasanuParbaudesTests/dati/geografija1.csv" }]}';
-  var testi = JSON.parse(testuDati);
-  console.log(testi.tests[0].failaURL);
+  let testi = JSON.parse(testuDati);
   
   const url = testi.tests[1].failaURL;
   //const url = "https://in24.github.io/zinasanuParbaudesTests/dati/grafika.csv";
