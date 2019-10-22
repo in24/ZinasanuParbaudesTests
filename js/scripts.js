@@ -117,8 +117,8 @@ let testuDati = '{"tests":[' +
   var testi = JSON.parse(testuDati);
   console.log(testi.tests[0].failaURL);
   
-  
-  const url = "https://in24.github.io/zinasanuParbaudesTests/dati/grafika.csv";
+  const url = testi.tests[1].failaURL;
+  //const url = "https://in24.github.io/zinasanuParbaudesTests/dati/grafika.csv";
   Papa.parse(url, {
     download: true,
     header: true,
