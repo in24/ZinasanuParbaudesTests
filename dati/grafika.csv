@@ -1,5 +1,5 @@
 jautajums;atbilde1;atbilde2;atbilde3;atbilde4
 Kas ir digitālā attēla izšķirtspēja?;Pikseļu skaits collā;Bitu skaits pikseļa krāsas raksturošanai;Krāsu skaits paletē;Pikseļu skaits pa horizontāli un vertikāli
 Rastrgrafikā attēls tiek veidots...;no atsevišķiem punktiem;no taisnēm un līknēm;tāpat kā vektorgrafikā, tikai kvalitatīvāk;tāpat kā vektorgrafikā, tikai nekvalitatīvāk
-Kāpēc grafiskā lietotne mēdz brīdināt, ka izdrukā krāsa atšķirsies?<img src="../bildes/brivais_suns.png" />;Ekrāna un drukas krāsu modeļi atšķiras;Drukas iekārtā var nebūt balts papīrs;Kādam parametram norādīta neiespējama vērtība;Vienā no drukas kasetnēm beigusies krāsa
+Kāpēc grafiskā lietotne mēdz brīdināt, ka izdrukā krāsa <br>atšķirsies?<img src="../bildes/brivais_suns.png" />;Ekrāna un drukas krāsu modeļi atšķiras;Drukas iekārtā var nebūt balts papīrs;Kādam parametram norādīta neiespējama vērtība;Vienā no drukas kasetnēm beigusies krāsa
 Kurš raksturlielums nosaka atšķirību starp tumšajiem un gaišajiem toņiem?;Kontrasts;Caurspīdīgums;Piesātinājums;Spilgtums
