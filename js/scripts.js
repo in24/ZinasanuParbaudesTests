@@ -4,9 +4,9 @@ var jautajums = 0;
 var rezultats = 0;
 var pareiza = []; // pareizo atbilžu masīvs
 var testuDati = '{"tests":[' +
-'{"nosaukums":"Grafika","fails":"grafika1.csv" },' +
-'{"nosaukums":"HTML","fails":"html1.csv" },' +
-'{"nosaukums":"Ģeogrāfija","fails":"geografija1.csv" }]}';
+'{"nosaukums":"Tests par grafiku","failaURL":"https://in24.github.io/zinasanuParbaudesTests/dati/grafika1.csv" },' +
+'{"nosaukums":"Tests par HTML","failaURL":"https://in24.github.io/zinasanuParbaudesTests/dati/html1.csv" },' +
+'{"nosaukums":"Ģeogrāfijas zināšanu tests","failaURL":"https://in24.github.io/zinasanuParbaudesTests/dati/geografija1.csv" }]}';
 testi = JSON.parse(testuDati);
 
 
@@ -117,7 +117,7 @@ function nakamais() {
 
 function testaJautajumiNoCSV(callback) {
   
-  
+  console.log(testi.tests[0].fails);
   
   
   const url = "https://in24.github.io/zinasanuParbaudesTests/dati/grafika.csv";
