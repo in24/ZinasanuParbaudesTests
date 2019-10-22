@@ -3,6 +3,12 @@ var preloader;
 var jautajums = 0;
 var rezultats = 0;
 var pareiza = []; // pareizo atbilžu masīvs
+var testuDati = '{"tests":[' +
+'{"nosaukums":"Grafika","fails":"grafika1.csv" },' +
+'{"nosaukums":"HTML","fails":"html1.csv" },' +
+'{"nosaukums":"Ģeogrāfija","fails":"geografija1.csv" }]}';
+testi = JSON.parse(testuDati);
+
 
 // atverot testu nerāda atbilžu pogas
 window.onload = atverotTestu;
@@ -110,6 +116,10 @@ function nakamais() {
 }
 
 function testaJautajumiNoCSV(callback) {
+  
+  
+  
+  
   const url = "https://in24.github.io/zinasanuParbaudesTests/dati/grafika.csv";
   Papa.parse(url, {
     download: true,
