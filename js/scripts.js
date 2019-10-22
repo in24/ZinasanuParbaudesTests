@@ -115,7 +115,7 @@ let testuDati = '{"tests":[' +
 '{"nosaukums":"Tests par HTML","failaURL":"https://in24.github.io/zinasanuParbaudesTests/dati/html1.csv" },' +
 '{"nosaukums":"Ģeogrāfijas zināšanu tests","failaURL":"https://in24.github.io/zinasanuParbaudesTests/dati/geografija1.csv" }]}';
   var testi = JSON.parse(testuDati);
-  console.log(testi.tests[0].fails);
+  console.log(testi.tests[0].failaURL);
   
   
   const url = "https://in24.github.io/zinasanuParbaudesTests/dati/grafika.csv";
