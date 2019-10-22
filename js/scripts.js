@@ -3,12 +3,6 @@ var preloader;
 var jautajums = 0;
 var rezultats = 0;
 var pareiza = []; // pareizo atbilžu masīvs
-var testuDati = '{"tests":[' +
-'{"nosaukums":"Tests par grafiku","failaURL":"https://in24.github.io/zinasanuParbaudesTests/dati/grafika1.csv" },' +
-'{"nosaukums":"Tests par HTML","failaURL":"https://in24.github.io/zinasanuParbaudesTests/dati/html1.csv" },' +
-'{"nosaukums":"Ģeogrāfijas zināšanu tests","failaURL":"https://in24.github.io/zinasanuParbaudesTests/dati/geografija1.csv" }]}';
-testi = JSON.parse(testuDati);
-
 
 // atverot testu nerāda atbilžu pogas
 window.onload = atverotTestu;
@@ -116,7 +110,11 @@ function nakamais() {
 }
 
 function testaJautajumiNoCSV(callback) {
-  
+let testuDati = '{"tests":[' +
+'{"nosaukums":"Tests par grafiku","failaURL":"https://in24.github.io/zinasanuParbaudesTests/dati/grafika1.csv" },' +
+'{"nosaukums":"Tests par HTML","failaURL":"https://in24.github.io/zinasanuParbaudesTests/dati/html1.csv" },' +
+'{"nosaukums":"Ģeogrāfijas zināšanu tests","failaURL":"https://in24.github.io/zinasanuParbaudesTests/dati/geografija1.csv" }]}';
+  var testi = JSON.parse(testuDati);
   console.log(testi.tests[0].fails);
   
   
