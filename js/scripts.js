@@ -1,14 +1,12 @@
+var testuDati = '{"tests":[' +
+'{"nosaukums":"Tests par grafiku","failaURL":"https://in24.github.io/zinasanuParbaudesTests/dati/grafika1.csv" },' +
+'{"nosaukums":"Tests par HTML","failaURL":"https://in24.github.io/zinasanuParbaudesTests/dati/html1.csv" },' +
+'{"nosaukums":"Ģeogrāfijas zināšanu tests","failaURL":"https://in24.github.io/zinasanuParbaudesTests/dati/geografija1.csv" }]}';
 var testaJautajumi;
 var preloader;
 var jautajums = 0;
 var rezultats = 0;
 var pareiza = []; // pareizo atbilžu masīvs
-var testuDati = '{"tests":[' +
-'{"nosaukums":"Grafika","fails":"grafika1.csv" },' +
-'{"nosaukums":"HTML","fails":"html1.csv" },' +
-'{"nosaukums":"Ģeogrāfija","fails":"geografija1.csv" }]}';
-testi = JSON.parse(testuDati);
-
 
 // atverot testu nerāda atbilžu pogas
 window.onload = atverotTestu;
@@ -21,7 +19,7 @@ function pienemAtbildi() {
 }
 
 function rezultataUzskaite() {
-  console.log(document.activeElement.value + " - " + pareiza[jautajums]);
+//  console.log(document.activeElement.value + " - " + pareiza[jautajums]);
   if (document.activeElement.textContent == pareiza[jautajums]) {
     rezultats++;
   }
@@ -32,9 +30,7 @@ function beidzSpeli() {
   radit("rezult");
   document.getElementById("jaut").innerText = "Tests beidzies!";
   jautajums += 1;
-  console.log(
-    "Testā ieguvi " + rezultats + " punktus no " + jautajums + " jautājumiem!"
-  );
+//  console.log("Testā ieguvi " + rezultats + " punktus no " + jautajums + " jautājumiem!");
   let p = "";
   for (let i = 0; i < jautajums; i++) {
     p =
@@ -73,7 +69,7 @@ function atteloHTML() {
       };
     });
     testaJautajumi = shuffle(testaJautajumi);
-    console.log(testaJautajumi);
+  //  console.log(testaJautajumi);
     nomainitJautajumu(jautajums);
   });
   // kad sākas tests poga par testa sākšanu un rezultāts tiek paslēpta
@@ -84,7 +80,7 @@ function atteloHTML() {
 function nomainitJautajumu() {
   // Nomaina jautājumu
   pareiza[jautajums] = testaJautajumi[jautajums].atbildes[0];
-  console.log("Pareizā atbilde: " + pareiza[jautajums] + ", j=" + jautajums);
+  //console.log("Pareizā atbilde: " + pareiza[jautajums] + ", j=" + jautajums);
   testaJautajumi[jautajums].atbildes = shuffle(
     testaJautajumi[jautajums].atbildes
   );
@@ -116,11 +112,11 @@ function nakamais() {
 }
 
 function testaJautajumiNoCSV(callback) {
-  
-  
-  
-  
-  const url = "https://in24.github.io/zinasanuParbaudesTests/dati/grafika.csv";
+  const testi = JSON.parse(testuDati);
+  const testaNumurs = parseInt(document.getElementById("testaIzvele").value);
+  const url = testi.tests[testaNumurs].failaURL;
+  //console.log(url);
+  //const url = "https://in24.github.io/zinasanuParbaudesTests/dati/grafika.csv";
   Papa.parse(url, {
     download: true,
     header: true,
