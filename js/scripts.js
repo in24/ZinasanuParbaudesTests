@@ -1,8 +1,10 @@
-var testuDati = '{"tests":[' +
+var testuDati =
+'{"tests":[' +
 '{"nosaukums":"Tests par grafiku","failaURL":"https://in24.github.io/zinasanuParbaudesTests/dati/grafika1.csv" },' +
-'{"nosaukums":"Tests par HTML","failaURL":"https://in24.github.io/zinasanuParbaudesTests/dati/html1.csv" },' +
-'{"nosaukums":"Ģeogrāfijas zināšanu tests","failaURL":"https://in24.github.io/zinasanuParbaudesTests/dati/geografija1.csv" },'+
-'{"nosaukums":"Tests par HTML teksta noformēšanu","failaURL":"https://in24.github.io/zinasanuParbaudesTests/dati/html2.csv" }]},' ;
+'{"nosaukums":"1. tests par HTML","failaURL":"https://in24.github.io/zinasanuParbaudesTests/dati/html1.csv" },' +
+'{"nosaukums":"2. tests par HTML","failaURL":"https://in24.github.io/zinasanuParbaudesTests/dati/html2.csv" },' +
+'{"nosaukums":"Tests par datu drošību","failaURL":"https://in24.github.io/zinasanuParbaudesTests/dati/datudrosiba1.csv" },' +
+'{"nosaukums":"Ģeogrāfijas zināšanu tests","failaURL":"https://in24.github.io/zinasanuParbaudesTests/dati/geografija1.csv" }]}';
 var testaJautajumi;
 var preloader;
 var jautajums = 0;
@@ -20,7 +22,7 @@ function pienemAtbildi() {
 }
 
 function rezultataUzskaite() {
-//  console.log(document.activeElement.value + " - " + pareiza[jautajums]);
+  //  console.log(document.activeElement.value + " - " + pareiza[jautajums]);
   if (document.activeElement.textContent == pareiza[jautajums]) {
     rezultats++;
   }
@@ -31,7 +33,7 @@ function beidzSpeli() {
   radit("rezult");
   document.getElementById("jaut").innerText = "Tests beidzies!";
   jautajums += 1;
-//  console.log("Testā ieguvi " + rezultats + " punktus no " + jautajums + " jautājumiem!");
+  //  console.log("Testā ieguvi " + rezultats + " punktus no " + jautajums + " jautājumiem!");
   let p = "";
   for (let i = 0; i < jautajums; i++) {
     p =
@@ -70,7 +72,7 @@ function atteloHTML() {
       };
     });
     testaJautajumi = shuffle(testaJautajumi);
-  //  console.log(testaJautajumi);
+    //  console.log(testaJautajumi);
     nomainitJautajumu(jautajums);
   });
   // kad sākas tests poga par testa sākšanu un rezultāts tiek paslēpta
